@@ -39,20 +39,18 @@ ip_ihl_ver = (ip_ver << 4) + ip_ihl
 
 ip_header = pack('!BBHHHBBH4s4s' , ip_ihl_ver, ip_tos, ip_tot_len, ip_id, ip_frag_off, ip_ttl, ip_proto, ip_check, ip_saddr, ip_daddr)
 
-tcp_source = 1234   # source port
-tcp_dest = 80   # destination port
+tcp_source = 1234
+tcp_dest = 80   
 tcp_seq = 454
 tcp_ack_seq = 0
-tcp_doff = 5    #4 bit field, size of tcp header, 5 * 4 = 20 bytes
-
-#tcp flags
+tcp_doff = 5   
 tcp_fin = 0
 tcp_syn = 1
 tcp_rst = 0
 tcp_psh = 0
 tcp_ack = 0
 tcp_urg = 0
-tcp_window = socket.htons (5840)    #   maximum allowed window size
+tcp_window = socket.htons (5840)    
 tcp_check = 0
 tcp_urg_ptr = 0
 tcp_offset_res = (tcp_doff << 4) + 0
