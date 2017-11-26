@@ -23,23 +23,19 @@ memset(&sin, 0, sizeof(sin));
 sin.sin_family = AF_INET;
 sin.sin_port = 0;
 
-/*Parse command line address. */
 if (inet_pton(AF_INET, argv[1], &sin.sin_addr) <= 0)
 err(EX_USAGE, "Parse address");
 
-/* Look up tcp although it's 6.*/
 p = getprotobyname("tcp");
 if (p == NULL)
 err(EX_UNAVAILABLE, "getprotobyname");
 
-/*Make a new shiny (Firefly) socket.*/
 s = socket(AF_INET, SOCK_RAW, p->p_proto);
 if (s < 0)
 err(EX_OSERR, "socket");
 
 memset(&tcp, 0, sizeof(tcp));
 
-/*Fill in some random stuff.*/
 tcp.th_sport = htons(4567);
 tcp.th_dport = htons(3030);
 tcp.th_seq = 4; /* Chosen by fair dice roll. */
