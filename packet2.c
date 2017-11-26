@@ -36,18 +36,17 @@ int main(int argc, char *argv[])
 	if (sockfd<0)
 		err(EX_OSERR, "socket");
 
-	/*Init IP packet header fields*/
 	memset(&pkt_hdr,0, sizeof(pkt_hdr));
-	pkt_hdr.ip_hl  = 0x5; // 5 x 32 bit length units
-	pkt_hdr.ip_v   = 0x4; // IPv4 type packet
-	pkt_hdr.ip_tos = 0x0; // ?? Type of Service, packet precedence ???
-	pkt_hdr.ip_len = 20; // Total Length of Packet
-	pkt_hdr.ip_id  = 12830; // Packet ID
-	pkt_hdr.ip_off = 0x0; // Set fragment offset to 0, don't want fragmentation
-	pkt_hdr.ip_ttl = 64; // TTL in number of hops
-	pkt_hdr.ip_p   = IPPROTO_RAW; // Protocol
-	pkt_hdr.ip_sum = 0x0; // No checksum 
-	/*Write the packet out to the network pipe*/
+	pkt_hdr.ip_hl  = 0x5;
+	pkt_hdr.ip_v   = 0x4; 
+	pkt_hdr.ip_tos = 0x0; 
+	pkt_hdr.ip_len = 20; 
+	pkt_hdr.ip_id  = 12830; 
+	pkt_hdr.ip_off = 0x0; 
+	pkt_hdr.ip_ttl = 64; 
+	pkt_hdr.ip_p   = IPPROTO_RAW; 
+	pkt_hdr.ip_sum = 0x0; 
+	
 	while(1){
 	rc=sendto(sockfd, &pkt_hdr, sizeof(pkt_hdr),0,(struct sockaddr *)&sin,sizeof(sin));
 	printf("Sending %d Bytes\n",rc);
