@@ -15,6 +15,5 @@ for (int i=0;i<20;i++){
 ds.send(dp);
 System.out.println("Sending "+ length +" bytes");
 } 
-//ds.close(); 
 }
 }
