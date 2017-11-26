@@ -38,7 +38,7 @@ memset(&tcp, 0, sizeof(tcp));
 
 tcp.th_sport = htons(4567);
 tcp.th_dport = htons(3030);
-tcp.th_seq = 4; /* Chosen by fair dice roll. */
+tcp.th_seq = 4;
 tcp.th_ack = 0;
 tcp.th_off = 5;
 tcp.th_flags = TH_SYN;
